@@ -9,7 +9,7 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as mp
 
-#載入train test
+# 載入train test
 train = pd.read_csv(r"train.csv")
 test = pd.read_csv(r"test.csv")
 ```
@@ -20,26 +20,23 @@ Age Cabin Embarked 有缺失值
 
 測試集有 418 筆資料、11 個欄位
 Age Fare Cabin 有缺失值
-
-### 程式碼:
 ```python
 train.info()
 test.info()
 ```
-### 執行結果:
 ![image](--------------------------------------------------------0-1)
 ![image](--------------------------------------------------------0-2)
 
-### 程式碼:
+### 觀察數據分布:
 ```python
 D1 = train.describe()
 D2 = test.describe()
 ```
-### 執行結果:
 ![image](--------------------------------------------------------0-1)
 ![image](--------------------------------------------------------0-2)
 
-#合併資料
+### 合併資料:
+```python
 data = pd.concat([train, test], ignore_index=True)
 ```
 ![image](---------------------------------------------------------)
