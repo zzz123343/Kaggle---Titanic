@@ -10,8 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split, GridSearchCV
 
-train = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\train.csv", encoding="utf-8")
-test = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\test.csv", encoding="utf-8")
+train = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\train.csv",encoding="utf-8")
+test = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\test.csv",encoding="utf-8")
 ```
 
 ## 2. 確認缺失值和資料屬性:
@@ -39,73 +39,73 @@ test.describe()
 ## 3. 處理缺失值:
 ```python
 # 用年齡的中位數填補缺失的年齡值
-train['Age'].fillna(train['Age'].median(), inplace=True)
+train['Age'].fillna(train['Age'].median(),inplace=True)
 # 用眾數填補缺失的登船點
-train['Embarked'].fillna(train['Embarked'].mode()[0], inplace=True)
+train['Embarked'].fillna(train['Embarked'].mode()[0],inplace=True)
 # 用艙等的平均票價填補缺失的票價
-train['Fare'].fillna(train.groupby('Pclass')['Fare'].transform('median'), inplace=True)
+train['Fare'].fillna(train.groupby('Pclass')['Fare'].transform('median'),inplace=True)
 
 # 同樣處理 test 數據集中的缺失值
 test['Age'].fillna(test['Age'].median(), inplace=True)
-test['Fare'].fillna(test.groupby('Pclass')['Fare'].transform('median'), inplace=True)
+test['Fare'].fillna(test.groupby('Pclass')['Fare'].transform('median'),inplace=True)
 ```
 
 ## 4.視覺化與理解
 ```python
 # 生存率
-sns.countplot(x='Survived', hue='Survived', data=train)
+sns.countplot(x='Survived',hue='Survived',data=train)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-1.png)  
 ```python
 # 艙等 生存率
-sns.countplot(x='Pclass', hue='Survived', data=train)
+sns.countplot(x='Pclass',hue='Survived',data=train)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-2.png)  
 ```python
 
 # 性別 生存率
-sns.countplot(x='Sex', hue='Survived', data=train)
+sns.countplot(x='Sex',hue='Survived',data=train)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-3.png)  
 ```python
 
 # 登船點 生存率
-sns.countplot(x='Embarked', hue='Survived', data=train)
+sns.countplot(x='Embarked',hue='Survived',data=train)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-4.png)  
 ```python
 
 # 年齡 生存率
-g = sns.FacetGrid(train, col='Survived')
-g.map(sns.histplot, 'Age', kde=False)
+g = sns.FacetGrid(train,col='Survived')
+g.map(sns.histplot,'Age',kde=False)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-5.png)  
 ```python
 
 # 票價 生存率
-g = sns.FacetGrid(train, col='Survived')
-g.map(sns.histplot, 'Fare', kde=False)
+g = sns.FacetGrid(train,col='Survived')
+g.map(sns.histplot,'Fare',kde=False)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-6.png)  
 ```python
 
 # 父母+子女 生存率
-g = sns.FacetGrid(train, col='Survived')
-g.map(sns.histplot, 'Parch', kde=False)
+g = sns.FacetGrid(train,col='Survived')
+g.map(sns.histplot,'Parch',kde=False)
 plt.show()
 ```  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-7.png)  
 ```python
 
 # 兄弟姊妹+配偶 生存率
-g = sns.FacetGrid(train, col='Survived')
-g.map(sns.histplot, 'SibSp', kde=False)
+g = sns.FacetGrid(train,col='Survived')
+g.map(sns.histplot,'SibSp',kde=False)
 plt.show()
 ```
 ![](https://github.com/zzz123343/Kaggle---Titanic-/blob/main/images/2-8.png)  
@@ -114,13 +114,13 @@ plt.show()
 ```python
 # 為了進一步分析，提取乘客的稱謂（例如 Mr, Mrs 等），這可能與生存率有關
 for df in [train, test]:
-    df['Title'] = df['Name'].str.extract('([A-Za-z]+)\.', expand=False)
-    df['Title'] = df['Title'].replace(['Mlle', 'Ms', 'Mme'], 'Miss')
-    df['Title'] = df['Title'].replace(['Lady', 'Countess', 'Dona', 'Jonkheer'], 'Rare')
-    df['Title'] = df['Title'].replace(['Capt', 'Col', 'Major', 'Dr', 'Rev'], 'Officer')
-    df['Title'] = df['Title'].replace('Don', 'Mr')
-    df['Title'] = df['Title'].replace('Sir', 'Mr')
-    df['Title'] = df['Title'].replace('the Countess', 'Mrs')
+    df['Title'] = df['Name'].str.extract('([A-Za-z]+)\.',expand=False)
+    df['Title'] = df['Title'].replace(['Mlle', 'Ms', 'Mme'],'Miss')
+    df['Title'] = df['Title'].replace(['Lady', 'Countess', 'Dona', 'Jonkheer'],'Rare')
+    df['Title'] = df['Title'].replace(['Capt', 'Col', 'Major', 'Dr', 'Rev'],'Officer')
+    df['Title'] = df['Title'].replace('Don','Mr')
+    df['Title'] = df['Title'].replace('Sir','Mr')
+    df['Title'] = df['Title'].replace('the Countess','Mrs')
 
     # 創建家庭大小特徵，因為大家庭或單獨旅行可能影響生存機率
     df['FamilySize'] = df['SibSp'] + df['Parch'] + 1
@@ -130,25 +130,25 @@ for df in [train, test]:
     df['IsAlone'].loc[df['FamilySize'] > 1] = 0  # 如果家庭成員數大於1，設置為非獨行
 
     # 門票價格分段
-    df['FareBand'] = pd.qcut(df['Fare'], 4)
+    df['FareBand'] = pd.qcut(df['Fare'],4)
 
     # 年齡分段，將乘客年齡分成5個區間
-    df['AgeBand'] = pd.cut(df['Age'], 5)
+    df['AgeBand'] = pd.cut(df['Age'],5)
 ```
 
 ## 6. 類別變數轉換:
 ```python
 # 使用 get_dummies() 方法將類別變數轉換為虛擬變數，方便隨機森林模型進行訓練
-train = pd.get_dummies(train, columns=['Sex', 'Embarked', 'Title', 'FareBand', 'AgeBand'], drop_first=True)
-test = pd.get_dummies(test, columns=['Sex', 'Embarked', 'Title', 'FareBand', 'AgeBand'], drop_first=True)
+train = pd.get_dummies(train, columns=['Sex','Embarked','Title','FareBand','AgeBand'],drop_first=True)
+test = pd.get_dummies(test, columns=['Sex','Embarked','Title','FareBand','AgeBand'],drop_first=True)
 
 # 保留 PassengerId 以便後續生成提交文件
 passenger_ids = test['PassengerId']
-train = train.drop(['Cabin', 'Name', 'Ticket'], axis=1)
-test = test.drop(['Cabin', 'Name', 'Ticket'], axis=1)
+train = train.drop(['Cabin','Name','Ticket'],axis=1)
+test = test.drop(['Cabin','Name','Ticket'],axis=1)
 
 # 確保 train 和 test 的特徵對齊，填補測試集中的缺失列
-test = test.reindex(columns=train.columns.drop('Survived'), fill_value=0)
+test = test.reindex(columns=train.columns.drop('Survived'),fill_value=0)
 ```
 
 ## 7. 數據分割:
@@ -171,15 +171,15 @@ y_pred = model.predict(X_test)
 
 # 計算模型準確度
 accuracy = accuracy_score(y_test, y_pred)
-print(f'Accuracy: {accuracy:.4f}')
+print(f'Accuracy:{accuracy:.4f}')
 ```
 
 ## 9. 使用 GridSearch 進行模型優化:
 ```python
 param_grid = {
-    'n_estimators': [100, 200, 300],
-    'max_depth': [None, 10, 20, 30],
-    'min_samples_split': [2, 5, 10]
+    'n_estimators':[100, 200, 300],
+    'max_depth':[None, 10, 20, 30],
+    'min_samples_split':[2, 5, 10]
 }
 
 # 使用 GridSearchCV 進行超參數調優
@@ -196,10 +196,10 @@ y_test_pred = best_model.predict(test)
 ```python
 # 最後，將預測結果寫入 CSV 文件，便於提交
 submission = pd.DataFrame({
-    "PassengerId": passenger_ids,
-    "Survived": y_test_pred
+    "PassengerId":passenger_ids,
+    "Survived":y_test_pred
 })
 
 # 保存提交文件
-submission.to_csv('submission.csv', index=False)
+submission.to_csv('submission.csv',index=False)
 ```
