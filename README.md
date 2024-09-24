@@ -22,9 +22,9 @@ train.info()
 test.info()
 ```
 train.info()  
-![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-1.png)
+![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-1.png)  
 test.info()  
-![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-2.png)
+![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-2.png)  
 
 ```python
 #查看各項數據
