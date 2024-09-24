@@ -21,9 +21,9 @@ test = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\test.csv", encoding="ut
 train.info()
 test.info()
 ```
-train.info()
+train.info()  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-1.png)
-test.info()
+test.info()  
 ![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-2.png)
 
 ```python
