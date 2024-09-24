@@ -21,7 +21,9 @@ test = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\test.csv", encoding="ut
 train.info()
 test.info()
 ```
+train.info()
 ![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-1.png)
+test.info()
 ![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/0-2.png)
 
 ```python
@@ -29,8 +31,10 @@ test.info()
 train.describe()
 test.describe()
 ```
+train.describe()
 ![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/1-1.png)
-![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/2-2.png)
+test.describe()
+![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/1-2.png)
 
 ### 3. 處理缺失值:
 ```python
