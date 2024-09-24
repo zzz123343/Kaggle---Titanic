@@ -16,9 +16,13 @@ test = pd.read_csv(r"C:\Users\zzz12\Desktop\data\titanic\test.csv", encoding="ut
 
 ### 2. 確認缺失值和資料屬性:
 ```python
-# 確認缺失值
+# 確認缺失值和查看
 train.info()
 test.info()
+
+#查看各項數據
+train.describe()
+test.describe()
 ```
 
 ### 3. 處理缺失值:
