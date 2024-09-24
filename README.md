@@ -61,7 +61,7 @@ for df in [train, test]:
     df['AgeBand'] = pd.cut(df['Age'], 5)
 ```
 
-# 5. 類別變數轉換:
+### 5. 類別變數轉換:
 ```python
 # 使用 get_dummies() 方法將類別變數轉換為虛擬變數，方便隨機森林模型進行訓練
 train = pd.get_dummies(train, columns=['Sex', 'Embarked', 'Title', 'FareBand', 'AgeBand'], drop_first=True)
