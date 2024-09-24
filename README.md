@@ -31,10 +31,10 @@ test.info()
 train.describe()
 test.describe()
 ```
-train.describe()
-![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/1-1.png)
-test.describe()
-![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/1-2.png)
+### train.describe()  
+![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/1-1.png)  
+###test.describe()  
+![](https://github.com/zzz123343/Kaggle---Titanic-/raw/main/images/1-2.png)  
 
 ## 3. 處理缺失值:
 ```python
