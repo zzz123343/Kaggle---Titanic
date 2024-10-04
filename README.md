@@ -1,4 +1,4 @@
-# Kaggle - Titanic 
+# Titanic - Machine Learning from Disaster
 
 ## 1.載入所需套件與數據:
 ```python
